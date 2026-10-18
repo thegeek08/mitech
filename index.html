@@ -457,6 +457,7 @@ main{overflow-x:clip}
         <h2>Merci <span id="doneName"></span> !</h2>
         <p>Ton numéro de dossier : <span class="num" id="doneNum"></span></p>
         <p id="sendStatus" style="color:var(--muted)">Ta candidature a bien été enregistrée. Garde ton numéro de dossier : l'équipe MITECH te contactera après l'étude des dossiers.</p>
+        <div style="background:var(--soft);border-radius:14px;padding:16px 18px;display:grid;gap:4px"><strong>Une question sur ta candidature ?</strong><span style="color:var(--muted)">Écris au support MITECH en indiquant ton numéro de dossier : <strong style="color:var(--brand)">mitechdeve@gmail.com</strong></span></div>
         <pre id="recap"></pre>
         <div class="acts">
           <button class="btn btn-line" type="button" id="copyBtn">Copier le récapitulatif</button>
@@ -478,8 +479,7 @@ main{overflow-x:clip}
     </div>
     <div style="display:grid;gap:8px">
       <span class="tag">Contact</span>
-      <p>Téléphone / WhatsApp : <a id="telAff" href="https://wa.me/221783879374" target="_blank" rel="noopener" style="color:var(--sun)">+221 78 387 93 74</a></p>
-      <p>E-mail : babacardabo109@gmail.com</p>
+      <p>Support candidats : <span style="color:var(--sun)">mitechdeve@gmail.com</span></p>
       <p>Adresse : Hersent, Thiès</p>
     </div>
     <div style="display:grid;gap:8px">
@@ -611,7 +611,7 @@ form.addEventListener('submit',async e=>{
       await fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
       status.textContent="Ta candidature a bien été envoyée à MITECH. Garde ton numéro de dossier : l'équipe te contactera après l'étude des dossiers.";
     }catch(_){
-      status.textContent="L'envoi n'a pas fonctionné. Vérifie ta connexion internet puis clique sur « Nouvelle candidature » pour réessayer, ou appelle MITECH au 78 387 93 74.";
+      status.textContent="L'envoi n'a pas fonctionné. Vérifie ta connexion internet puis clique sur « Nouvelle candidature » pour réessayer, ou écris à MITECH : mitechdeve@gmail.com";
     }
     btn.disabled=false; btn.textContent='Envoyer ma candidature';
   }
