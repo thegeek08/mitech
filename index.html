@@ -456,10 +456,9 @@ main{overflow-x:clip}
         <span class="tag">Candidature enregistrée</span>
         <h2>Merci <span id="doneName"></span> !</h2>
         <p>Ton numéro de dossier : <span class="num" id="doneNum"></span></p>
-        <p id="sendStatus" style="color:var(--muted)">Envoie ce récapitulatif à MITECH sur WhatsApp pour finaliser ta candidature. L'équipe te contactera après l'étude des dossiers.</p>
+        <p id="sendStatus" style="color:var(--muted)">Ta candidature a bien été enregistrée. Garde ton numéro de dossier : l'équipe MITECH te contactera après l'étude des dossiers.</p>
         <pre id="recap"></pre>
         <div class="acts">
-          <a class="btn btn-sun" id="waBtn" target="_blank" rel="noopener">Envoyer sur WhatsApp</a>
           <button class="btn btn-line" type="button" id="copyBtn">Copier le récapitulatif</button>
           <button class="btn btn-line" type="button" id="againBtn">Nouvelle candidature</button>
         </div>
@@ -610,14 +609,12 @@ form.addEventListener('submit',async e=>{
     const btn=form.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Envoi en cours…';
     try{
       await fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
-      status.textContent="Ta candidature a bien été envoyée à MITECH. Garde ton numéro de dossier : l'équipe te contactera après l'étude des dossiers. Tu peux aussi envoyer ce récapitulatif sur WhatsApp pour confirmer.";
+      status.textContent="Ta candidature a bien été envoyée à MITECH. Garde ton numéro de dossier : l'équipe te contactera après l'étude des dossiers.";
     }catch(_){
-      status.textContent="L'envoi automatique n'a pas fonctionné (connexion internet ?). Envoie ce récapitulatif à MITECH sur WhatsApp pour que ta candidature soit bien reçue.";
+      status.textContent="L'envoi n'a pas fonctionné. Vérifie ta connexion internet puis clique sur « Nouvelle candidature » pour réessayer, ou appelle MITECH au 78 387 93 74.";
     }
     btn.disabled=false; btn.textContent='Envoyer ma candidature';
   }
-  const wa=document.getElementById('waBtn');
-  if(WHATSAPP){wa.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(recap);wa.hidden=false;}else{wa.hidden=true;}
   form.hidden=true; done.hidden=false; done.scrollIntoView({behavior:'smooth',block:'start'});
 });
 
